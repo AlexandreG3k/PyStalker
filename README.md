@@ -172,7 +172,7 @@ sudo chown -R $USER:$USER .
 **PyStalker** is intended for **educational and authorized security testing purposes only**.
 
 *   <img src="assets/icons/fc859.png" width="15"> **Do not** use this tool against systems you do not have explicit permission to test.
-*   The developers (**CHDEVSEC**) assume no liability and are not responsible for any misuse or damage caused by this program.
+*   The developers (**BRUMASEC**) assume no liability and are not responsible for any misuse or damage caused by this program.
 *   Always follow responsible disclosure policies.
 
 ---
@@ -185,7 +185,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-  ### <img src="assets/icons/fc15.png" width="25"> Developed by [CHDEVSEC](https://github.com/AlexandreG3k) | Pentester Alexandre
+  ### <img src="assets/icons/fc15.png" width="25"> Developed by [BRUMASEC](https://github.com/AlexandreG3k) | Pentester Alexandre
 
   <img src="assets/icons/fc2119.png" width="15"> **Happy Hacking!** <img src="assets/icons/fc2119.png" width="15">
 
