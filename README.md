@@ -16,7 +16,7 @@
 **Python Stalker** is an advanced automated reconnaissance framework designed for **Bug Bounty Hunters** and **Pentesters**. It combines multiple open-source intelligence (OSINT) tools with custom Python scripting to deliver a comprehensive security analysis of target domains.
 
 > <img src="assets/icons/fc950.png" width="20" style="vertical-align: middle;"> **Why PYTHON SYALKER?**  
-> Unlike simple wrapper scripts, Recon Pro performs **intelligent technology detection**, **context-aware fuzzing**, and **smart vulnerability checks** (XSS, SQLi, Sensitive Files) tailored to the target's stack (Node.js, PHP, Python, etc.).
+> Unlike simple wrapper scripts, Python Stalker performs **intelligent technology detection**, **context-aware fuzzing**, and **smart vulnerability checks** (XSS, SQLi, Sensitive Files) tailored to the target's stack (Node.js, PHP, Python, etc.).
 
 ---
 
