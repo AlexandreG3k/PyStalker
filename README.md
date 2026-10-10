@@ -172,7 +172,7 @@ sudo chown -R $USER:$USER .
 **PyStalker** is intended for **educational and authorized security testing purposes only**.
 
 *   <img src="assets/icons/fc859.png" width="15"> **Do not** use this tool against systems you do not have explicit permission to test.
-*   The developers (**BRUMASEC**) assume no liability and are not responsible for any misuse or damage caused by this program.
+*   The developers (**BRUMASE**) assume no liability and are not responsible for any misuse or damage caused by this program.
 *   Always follow responsible disclosure policies.
 
 ---
