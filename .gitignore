@@ -1,4 +1,12 @@
-
 __pycache__/
 *.pyc
+*.pyo
 .env
+.venv/
+venv/
+*.log
+
+# Ignorar relatórios e scans para não subir alvos para o GitHub público
+stalker_results/*
+!stalker_results/.gitkeep
+!stalker_results/screenshots/

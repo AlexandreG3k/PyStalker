@@ -1,192 +1,314 @@
-# <img src="assets/icons/fc12.png" width="40" style="vertical-align: middle;"> PYTHON STALKER - Ultimate Web Reconnaissance
+# ⚡ PyStalker v2.0 Pro - Ultimate Reconnaissance & Bug Bounty Framework
 
 <div align="center">
 
-  <img src="assets/icons/fc2119.png" width="20"> **Active Development** &nbsp;&nbsp;
-  <img src="assets/icons/fc2117.png" width="20"> **Python 3.x** &nbsp;&nbsp;
-  <img src="assets/icons/fc2120.png" width="20"> **Linux/Kali** &nbsp;&nbsp;
-  <img src="assets/icons/fc2118.png" width="20"> **MIT License**
-
-</div>
-
----
-
-## <img src="assets/icons/fc124.png" width="30" style="vertical-align: middle;"> Overview
-
-**Python Stalker** is an advanced automated reconnaissance framework designed for **Bug Bounty Hunters** and **Pentesters**. It combines multiple open-source intelligence (OSINT) tools with custom Python scripting to deliver a comprehensive security analysis of target domains.
-
-> <img src="assets/icons/fc950.png" width="20" style="vertical-align: middle;"> **Why PYTHON SYALKER?**  
-> Unlike simple wrapper scripts, Recon Pro performs **intelligent technology detection**, **context-aware fuzzing**, and **smart vulnerability checks** (XSS, SQLi, Sensitive Files) tailored to the target's stack (Node.js, PHP, Python, etc.).
-
----
-
-## <img src="assets/icons/fc5.png" width="30" style="vertical-align: middle;"> Key Features
-
-### <img src="assets/icons/fc2.png" width="25" style="vertical-align: middle;"> 1. Automated Subdomain Discovery
-*   **Multi-Source Intelligence**: Integrates powerful tools like `Subfinder`, `Assetfinder`, `Amass`, and `Findomain`.
-*   **API Leverage**: Uses **Shodan**, **SecurityTrails**, and **crt.sh** for maximum coverage.
-*   **Smart Fallback**: Automatically switches to brute-force DNS if passive sources yield low results.
-*   **Live Classification**: Automatically categorizes subdomains into:
-    *   <img src="assets/icons/fc855.png" width="15"> **Web Active** (HTTP/HTTPS)
-    *   <img src="assets/icons/fc856.png" width="15"> **DNS Only**
-    *   <img src="assets/icons/fc859.png" width="15"> **Filtered/Timeouts**
-
-### <img src="assets/icons/fc913.png" width="25" style="vertical-align: middle;"> 2. Intelligent Fuzzing & Exploitation
-*   **Tech-Aware Payloads**: Detects technologies (e.g., Laravel, React, Wordpress) and adjusts payloads accordingly.
-*   **Vulnerability Scanner**: Checks for:
-    *   Reflected XSS (Context-aware)
-    *   SQL Injection (Error-based)
-    *   Sensitive Files (`.env`, `.git`, backups)
-    *   Admin Panels & Login Interfaces
-*   **Google Dorking**: Automates search queries to find sensitive exposed data.
-
-### <img src="assets/icons/fc15.png" width="25" style="vertical-align: middle;"> 3. Professional Reporting
-*   Generates a **beautiful HTML Dashboard** for analyzing results.
-*   **Interactive Summary**: view live hosts, technologies, and critical findings in a clean interface.
-*   **Auto-Open**: Option to automatically open the report upon completion.
-
----
-
-## <img src="assets/icons/fc6.png" width="30" style="vertical-align: middle;"> Gallery
-
-<div align="center">
-  
-  <!-- Dashboard Main View -->
-  <img src="assets/public/Inicio.png" alt="Dashboard Overview" width="85%" style="border-radius: 6px;">
-  <br><br>
-
-  <!-- Scan Details -->
-  <img src="assets/public/Dashboard_2.png" alt="Scan Details" width="85%" style="border-radius: 6px;">
-  <br><br>
-
-  <!-- Vulnerability Report -->
-  <img src="assets/public/Dashboard_3.png" alt="Vulnerability Report" width="85%" style="border-radius: 6px;">
-  
-  <br><br>
-  <em><img src="assets/icons/fc13.png" width="15"> PYHTON STALKER HTML Dashboard Preview</em>
-
-</div>
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![OS](https://img.shields.io/badge/OS-Linux%20%7C%20Kali%20%7C%20WSL2-green?logo=linux&logoColor=white)](https://www.kali.org/)
+[![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-2.0.0%20Pro-cyan)](#)
+[![Maintained](https://img.shields.io/badge/Maintained%20by-BRUMASEC-red)](#)
 
 <br>
 
-<div align="center">
-  <!-- CLI Output -->
-  <img src="assets/public/Fim.png" alt="CLI Output" width="85%" style="border-radius: 6px;">
-  <br>
-  <em><img src="assets/icons/fc13.png" width="15"> Professional CLI Output</em>
+**PyStalker** é um framework profissional automatizado de **Reconhecimento Web (OSINT)** e **Descoberta de Superfície de Ataque** desenvolvido especialmente para **Bug Bounty Hunters**, **Pentesters** e **Pesquisadores de Segurança Defensiva/Ofensiva**.
+
+Ele combina as melhores ferramentas da comunidade (`Subfinder`, `Assetfinder`, `Findomain`, `httpx-toolkit`, `Waybackurls`, `Nuclei`) com scripts proprietários em Python para entregar uma análise completa, inteligente e acompanhada de um **Dashboard HTML moderno e interativo**.
+
 </div>
 
 ---
 
-## <img src="assets/icons/fc11.png" width="30" style="vertical-align: middle;"> Installation
+## 📑 Sumário
 
-We provide a **robust installer** (`install.sh`) that sets up your environment automatically.
+- [Visão Geral dos Recursos](#-visão-geral-dos-recursos)
+- [Pré-requisitos](#-pré-requisitos)
+- [Tutorial de Instalação](#-tutorial-de-instalação-passo-a-passo)
+  - [Método 1: Instalação Automática (Recomendada)](#-método-1-instalação-automática-rápida-recomendada)
+  - [Método 2: Instalação Manual com Ambiente Virtual (venv)](#-método-2-instalação-manual-com-ambiente-virtual-venv)
+- [Guia Prático de Uso](#-guia-prático-de-uso)
+  - [1. Teste Visual Rápido (Modo Demonstração)](#1-teste-visual-rápido-sem-gastar-rede)
+  - [2. Escaneamento Padrão de um Domínio](#2-escaneamento-padrão)
+  - [3. Auditoria Completa (Modo Full)](#3-auditoria-completa-modo-full)
+  - [4. Modo Rápido (Triagem de Velocidade)](#4-modo-rápido-fast-recon)
+  - [5. Escanear Múltiplos Alvos em Lote (Lista)](#5-escanear-múltiplos-alvos-em-lote)
+  - [6. Escanear com Port Scanner Ativo](#6-escanear-com-port-scanner-ativo)
+  - [7. Escanear com Nuclei Scanner](#7-escanear-integrando-o-nuclei-scanner)
+- [Entendendo os Resultados e Relatórios](#-entendendo-os-resultados-e-relatórios)
+- [Configuração de Chaves de API (Opcional)](#-configuração-de-chaves-de-api-opcional)
+- [Galeria de Fotos do Dashboard](#-galeria-do-dashboard)
+- [Perguntas Frequentes & Solução de Problemas](#-solução-de-problemas-faq)
+- [Aviso Legal (Disclaimer)](#-aviso-legal-disclaimer)
 
-### Prerequisites
-*   **OS**: Linux (Kali, Ubuntu, or Debian)
-*   **Python**: 3.7+
-*   **Sudo Access**: Required for system packages.
+---
 
-### <img src="assets/icons/fc910.png" width="20" style="vertical-align: middle;"> Quick Start
+## 🌟 Visão Geral dos Recursos
+
+| Módulo | Descrição |
+|---|---|
+| 🌐 **Subdomain Discovery** | Coleta passiva e ativa em múltiplas fontes: `Subfinder`, `Assetfinder`, `Findomain`, `Amass`, `crt.sh`, `Waybackurls` e DNS brute-force. |
+| ⚡ **HTTP Probing & Tech** | Probing inteligente com `httpx-toolkit` / motor concorrente, identificando status code, título, WAF, servidor e tecnologias. |
+| 🚨 **Subdomain Takeover** | Detecção automatizada de CNAMEs órfãos apontando para 12+ serviços em nuvem abandonados (GitHub Pages, AWS S3, Heroku, Shopify, Zendesk, etc.). |
+| 🛡️ **DNS & Email Security** | Auditoria de registros SPF, DMARC e verificação se o domínio está vulnerável a ataques de **Email Spoofing**, além de teste de transferência de zona (AXFR). |
+| 🔌 **Port Scanner Concorrente** | Varredura ultra-rápida de portas críticas em IPs únicos dos alvos (`80, 443, 8080, 8443, 8000, 3000, 5000, 3306, 6379, etc.`). |
+| 📜 **Wayback & Endpoints** | Mineração histórica com `waybackurls` e filtragem inteligente de parâmetros propensos a bugs (`?id=`, `?url=`, `?redirect=`, `?file=`). |
+| 🔑 **JavaScript Secrets** | Download e análise regex de arquivos `.js` em busca de rotas de API internas e tokens expostos (Google API, AWS, Slack, JWT). |
+| 🧬 **Fuzzing & Vulnerabilidades** | Detecção de arquivos sensíveis expostos (`.env`, `.git`, backups, phpinfo), testes de XSS refletido e integração com **Nuclei**. |
+| 🎯 **Google Dorks Prontos** | Geração de dorks avançados para arquivos sensíveis e painéis com botões de link direto para busca no Google em 1 clique. |
+| 📊 **Dashboard HTML Interativo** | Gráficos Chart.js, busca em tempo real, ordenação por coluna, filtros por status HTTP, cópia rápida e exportação para JSON. |
+
+---
+
+## 📋 Pré-requisitos
+
+Antes de instalar, certifique-se de que sua máquina possui:
+
+- **Sistema Operacional**: Linux (Kali Linux, Ubuntu, Debian, Parrot OS ou WSL2 no Windows).
+- **Python**: Versão `3.10` ou superior (`python3 --version`).
+- **Git**: Instalado para clonar o repositório (`git --version`).
+- **Acesso Sudo**: Necessário apenas para o instalador configurar pacotes de sistema e ferramentas de rede.
+
+---
+
+## 📥 Tutorial de Instalação Passo a Passo
+
+### 🚀 Método 1: Instalação Automática Rápida (Recomendada)
+
+O PyStalker inclui um script automatizado (`install.sh`) que atualiza dependências, instala o interpretador Go, compila ferramentas essenciais e configura as permissões:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/AlexandreG3k/PyStalker
+# 1. Abra seu terminal e clone o repositório
+git clone https://github.com/AlexandreG3k/PyStalker.git
+
+# 2. Acesse a pasta do projeto
 cd PyStalker
 
-# 2. Give execution permissions
-chmod +x install.sh
+# 3. Dê permissão de execução ao instalador e ao executável
+chmod +x install.sh PyStalker.py
 
-# 3. Run the installer
+# 4. Execute o instalador automático
 ./install.sh
 ```
 
+> [!NOTE]
+> O instalador verifica automaticamente as ferramentas instaladas no sistema (`subfinder`, `assetfinder`, `httpx-toolkit`, `waybackurls`, `nuclei`, `nmap`) e instala apenas o que estiver faltando.
+
 ---
 
-## <img src="assets/icons/fc910.png" width="30" style="vertical-align: middle;"> Usage
+### 🐍 Método 2: Instalação Manual com Ambiente Virtual (venv)
 
-The tool operates in different modes to suit your reconnaissance needs.
-
-### <img src="assets/icons/fc855.png" width="20" style="vertical-align: middle;"> Level 1: Basic Scan (Standard)
-Run the tool against a target domain. You will be prompted to interactively select the target technology (e.g., PHP, Node.js) to tailor the payloads.
+Se você prefere instalar as dependências Python em um ambiente virtual isolado:
 
 ```bash
-python3 PyStalker.py target.com
+# 1. Clone o repositório e acesse a pasta
+git clone https://github.com/AlexandreG3k/PyStalker.git
+cd PyStalker
+
+# 2. Crie e ative o ambiente virtual
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Instale as bibliotecas Python
+pip install -r requirements.txt
+
+# 4. Dê permissão de execução
+chmod +x PyStalker.py
 ```
 
-### <img src="assets/icons/fc2118.png" width="20" style="vertical-align: middle;"> Level 2: Focused Dorking (Intermediate)
-Refine your Google Dorking to look for specific vulnerability types only, reducing noise and API usage.
+---
+
+## 🎯 Guia Prático de Uso
+
+### 1. Teste Visual Rápido (Sem Gastar Rede)
+Execute o **Modo Mock** para ver o banner moderno, as tabelas dinâmicas do terminal e gerar um Dashboard HTML completo com dados de exemplo:
 
 ```bash
-# Search only for login portals and admin panels
-python3 PyStalker.py target.com --dork-type login
-
-# Search only for sensitive files (.env, .sql, backups)
-python3 PyStalker.py target.com --dork-type files
+python3 PyStalker.py --mock
 ```
 
-### <img src="assets/icons/fc859.png" width="20" style="vertical-align: middle;"> Level 3: Deep Recon (Advanced)
-Use **Soft Mode** to capture all DNS records, including subdomains that did not respond to HTTP probing (Timeouts/Connection Refused). This is useful to broaden the attack surface beyond just web servers.
+---
+
+### 2. Escaneamento Padrão
+Executa a descoberta de subdomínios, probing HTTP, identificação de tecnologias, classificação de hosts e fuzzing básico de arquivos sensíveis:
 
 ```bash
-# Enable Soft Mode (Includes DNS-only results in the report)
-python3 PyStalker.py target.com --mode soft
+python3 PyStalker.py alvo.com
 ```
 
 ---
 
-## <img src="assets/icons/fc9.png" width="30" style="vertical-align: middle;"> Configuration
-
-To enable **API-based** recon (Shodan, SecurityTrails, etc.), edit the `recon.py` file and add your keys:
-
-```python
-# API Configuration in recon.py
-API_KEYS = {
-    "SECURITYTRAILS": "YOUR_KEY_HERE", 
-    "SHODAN": "YOUR_KEY_HERE", 
-    "GOOGLE_API_KEY": "YOUR_KEY_HERE", 
-    "GOOGLE_CSE_ID": "YOUR_CX_ID_HERE" 
-}
-```
-
-```
-
----
-
-## <img src="assets/icons/fc869.png" width="30" style="vertical-align: middle;"> Troubleshooting
-
-### <img src="assets/icons/fc859.png" width="20" style="vertical-align: middle;"> Permission Denied Error
-If you encounter a `PermissionError` when generating reports (e.g., `[Errno 13] Permission denied`), it means the output directory is owned by `root`. This usually happens if you ran the tool with `sudo` previously.
-
-**Solution:**
-Fix the permissions for your current user by running:
+### 3. Auditoria Completa (Modo Full)
+Executa todo o arsenal de inteligência: subdomínios, port scanning, verificação de takeover, segurança de e-mail, mineração de parâmetros históricos via Wayback Machine, análise de scripts JavaScript e fuzzing profundo:
 
 ```bash
-sudo chown -R $USER:$USER .
+python3 PyStalker.py alvo.com --full
 ```
 
 ---
 
-## <img src="assets/icons/fc870.png" width="30" style="vertical-align: middle;"> Legal Disclaimer
+### 4. Modo Rápido (Fast Recon)
+Prioriza ferramentas mais leves para obter uma lista de subdomínios e hosts ativos em poucos segundos:
 
-**PyStalker** is intended for **educational and authorized security testing purposes only**.
-
-*   <img src="assets/icons/fc859.png" width="15"> **Do not** use this tool against systems you do not have explicit permission to test.
-*   The developers (**CHDEVSEC**) assume no liability and are not responsible for any misuse or damage caused by this program.
-*   Always follow responsible disclosure policies.
+```bash
+python3 PyStalker.py alvo.com --fast
+```
 
 ---
 
-## <img src="assets/icons/fc2118.png" width="30" style="vertical-align: middle;"> License
+### 5. Escanear Múltiplos Alvos em Lote
+Crie um arquivo de texto com a lista de domínios (um por linha) e execute:
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+```bash
+# Crie seu arquivo de alvos
+nano alvos.txt
+```
+*Exemplo de `alvos.txt`:*
+```text
+empresa1.com.br
+empresa2.com
+teste.org
+```
+
+Execute a varredura em lote:
+```bash
+python3 PyStalker.py -l alvos.txt --full
+```
+
+---
+
+### 6. Escanear com Port Scanner Ativo
+Para realizar varredura de portas TCP críticas (`80, 443, 8080, 8443, 8000, 3000, 3306, 6379, etc.`) nos endereços IP dos subdomínios ativos:
+
+```bash
+python3 PyStalker.py alvo.com --ports
+```
+
+---
+
+### 7. Escanear Integrando o Nuclei Scanner
+Dispare varreduras de templates do Nuclei nos hosts web ativos encontrados:
+
+```bash
+python3 PyStalker.py alvo.com --nuclei
+```
+
+---
+
+### 8. Fuzzing Direcionado por Tecnologia
+Ajuste os payloads de XSS e caminhos sensíveis de acordo com a stack da aplicação:
+
+```bash
+python3 PyStalker.py alvo.com --tech laravel
+python3 PyStalker.py alvo.com --tech php
+python3 PyStalker.py alvo.com --tech nodejs
+```
+
+---
+
+## 📊 Entendendo os Resultados e Relatórios
+
+Ao término da execução, todos os artefatos são salvos automaticamente no diretório `stalker_results/`:
+
+```text
+stalker_results/
+├── pystalker_report_<alvo>.html        <-- Dashboard HTML Interativo
+├── pystalker_<alvo>_<timestamp>.json   <-- Relatório bruto estruturado em JSON
+└── subdomains_<alvo>.txt               <-- Lista limpa de subdomínios (TXT)
+```
+
+### Como abrir o Dashboard no Navegador:
+1. Ao final do scan, o terminal perguntará se deseja abrir. Basta pressionar **[ENTER]**.
+2. Ou abra manualmente no seu navegador padrão:
+   ```bash
+   xdg-open stalker_results/pystalker_report_alvo.com.html
+   ```
+
+### Recursos do Dashboard HTML:
+- 🔍 **Barra de Pesquisa**: Digite qualquer termo para filtrar instantaneamente subdomínios, IPs ou tecnologias.
+- 🎯 **Filtros Rápidos**: Botões no topo da tabela para alternar entre códigos `2xx`, `3xx`, `4xx`, `5xx` e `🔑 Login`.
+- 📋 **Botão de Copiar**: Clique no ícone `📋` ao lado de qualquer host para copiá-lo diretamente para a área de transferência.
+- 💾 **Exportar JSON / Copiar Todos**: Botões no cabeçalho para baixar o arquivo JSON ou copiar todos os subdomínios de uma vez.
+
+---
+
+## 🔑 Configuração de Chaves de API (Opcional)
+
+O PyStalker funciona perfeitamente de forma 100% gratuita sem chaves de API. No entanto, se você possuir contas no Shodan ou SecurityTrails, você pode enriquecer a coleta definindo variáveis de ambiente no seu terminal:
+
+```bash
+# Adicione suas chaves no seu ~/.bashrc ou exporte no terminal:
+export SHODAN_API_KEY="sua_chave_shodan_aqui"
+export SECURITYTRAILS_API_KEY="sua_chave_securitytrails_aqui"
+export GOOGLE_API_KEY="sua_chave_google_aqui"
+export GOOGLE_CSE_ID="seu_custom_search_id_aqui"
+```
+
+---
+
+## 🖼️ Galeria do Dashboard
+
+<div align="center">
+
+### Visão Geral & Gráficos Interativos
+<img src="assets/public/Inicio1.png" alt="Dashboard Principal" width="90%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+
+<br><br>
+
+### Tabela de Hosts e Classificação
+<img src="assets/public/dashboard.png" alt="Hosts Ativos e Tecnologias" width="90%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+
+<br><br>
+
+### Relatório de Vulnerabilidades & Paths Sensíveis
+<img src="assets/public/dashboard1.png" alt="Vulnerabilidades e Fuzzing" width="90%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+
+<br><br>
+
+### Terminal Cyberpunk com Rich
+<img src="assets/public/Resultado.png" alt="Terminal Output" width="90%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+
+</div>
+
+---
+
+## ❓ Solução de Problemas (FAQ)
+
+### 1. `Permission denied` ao executar os arquivos
+Conceda permissão de execução nos scripts:
+```bash
+chmod +x install.sh PyStalker.py
+```
+
+### 2. Erro de ambiente gerenciado externamente (`error: externally-managed-environment`)
+Distribuições modernas do Linux (como Kali 2024+ e Debian 12+) protegem o Python do sistema. Para instalar as dependências:
+```bash
+pip3 install -r requirements.txt --break-system-packages
+```
+*Ou utilize um ambiente virtual com `python3 -m venv venv && source venv/bin/activate`.*
+
+### 3. Ferramentas como `subfinder` ou `waybackurls` não encontradas
+Certifique-se de que o diretório `$HOME/go/bin` está no seu `$PATH`:
+```bash
+echo 'export PATH=$PATH:$HOME/go/bin:/usr/local/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### 4. O Dashboard não abriu automaticamente
+Em ambientes sem interface gráfica (ex: VPS / SSH ou WSL sem display), use a tecla `c` para copiar o caminho ou transfira o arquivo `.html` gerado na pasta `stalker_results/` para abrir na sua máquina local.
+
+---
+
+## ⚖️ Aviso Legal (Disclaimer)
+
+O **PyStalker v2.0 Pro** é uma ferramenta de auditoria e segurança defensiva desenvolvida para profissionais autorizados e entusiastas de segurança cibernética.
+
+- **Autorização Obrigatória**: Nunca execute testes de segurança contra domínios, servidores ou aplicações sem autorização prévia por escrito do proprietário.
+- **Isenção de Responsabilidade**: Os desenvolvedores e mantenedores (**BRUMASEC**) não se responsabilizam por qualquer uso indevido, danos acidentais ou violações de termos de serviço causadas pelo uso deste software.
+- Sempre respeite as políticas de divulgação responsável e os termos de programas de Bug Bounty.
 
 ---
 
 <div align="center">
 
-  ### <img src="assets/icons/fc15.png" width="25"> Developed by [CHDEVSEC](https://github.com/AlexandreG3k) | Pentester Alexandre
-
-  <img src="assets/icons/fc2119.png" width="15"> **Happy Hacking!** <img src="assets/icons/fc2119.png" width="15">
+Desenvolvido com 💜 por **BRUMASEC** • Se este projeto te ajudou, deixe uma estrela ⭐ no GitHub!
 
 </div>
